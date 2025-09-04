@@ -1,4 +1,4 @@
-// swift-tools-version:6.2
+// swift-tools-version:6.1
 import PackageDescription
 
 enum Traits {
@@ -24,7 +24,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
-        .package(url: "https://github.com/diokaratzas/sqlite-nio.git", branch: "feature/sql-cipher",  traits: [
+        .package(url: "https://github.com/diokaratzas/sqlite-nio.git", branch: "feature/sql-cipher-2",  traits: [
             .trait(name: Traits.SQLite, condition: .when(traits: [Traits.SQLite])),
             .trait(name: Traits.SQLCipher, condition: .when(traits: [Traits.SQLCipher]))
         ]),
