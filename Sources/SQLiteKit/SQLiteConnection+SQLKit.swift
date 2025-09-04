@@ -256,7 +256,7 @@ struct SQLiteDatabaseVersion: SQLDatabaseReportedVersion {
     
     // See `SQLDatabase.withSession(_:)`.
     @usableFromInline
-    func withSession<R>(_ closure: @escaping @Sendable (any SQLDatabase) async throws -> R) async throws -> R {
+    func withSession<R: Sendable>(_ closure: @escaping @Sendable (any SQLDatabase) async throws -> R) async throws -> R {
         try await self.database.withConnection {
             try await closure($0.sql(encoder: self.encoder, decoder: self.decoder, queryLogLevel: self.queryLogLevel))
         }
